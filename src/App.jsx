@@ -5,16 +5,25 @@ import { FcEmptyTrash, FcCheckmark } from "react-icons/fc";
 import { Container, ToDoList, Input, Button, ListItem } from "./styles.js";
 
 function App() {
-  const [list, setList] = useState([{}]);
-  const [inputTask, setInputTask] = useState("");
+  const [list, setList] = useState([{ id: uuidv4(), task: 'Nada', finished: true }]);
+  const [inputTask, setInputTask] = useState('');
 
   function inputMudou(event) {
     setInputTask(event.target.value);
-    console.log(task);
+    console.log(inputTask);
   }
 
   function cliqueiNoBotao() {
-    setList([...list, { id: uuidv4(), task: inputTask }]);
+    setList([...list, { id: uuidv4(), task: inputTask, finished: false }]);
+  }
+
+  function finalizarTarefa(id){
+    
+    const newList = list.map( item => (
+      item.id === id ? { ...item, finished: true } : item
+    ))
+
+    setList(newList)
   }
 
   return (
@@ -25,9 +34,9 @@ function App() {
 
         <ul>
           {list.map((item) => (
-            <ListItem>
-              <FcCheckmark />
-              <li key={item.id}>{item.task}</li>
+            <ListItem isFinished={item.finished} key={item.id}>
+              <FcCheckmark onClick={() => finalizarTarefa(item.id)}/>
+              <li>{item.task}</li>
               <FcEmptyTrash />
             </ListItem>
           ))}

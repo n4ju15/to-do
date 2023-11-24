@@ -16,6 +16,7 @@ export const ToDoList = styled.div`
 
     ul {
         padding: 0;
+        margin-top: 40px;
     }
 `
 
@@ -23,8 +24,8 @@ export const Input = styled.input`
     border-radius: 5px;
     border: 2px solid rgba(209, 211, 212, 0.40);
     height: 40px;
-    margin-right: 10px;
-    width: 342px;
+    margin-right: 20px;
+    width: 380px;
 `
 
 export const Button = styled.button`
@@ -41,7 +42,7 @@ export const Button = styled.button`
 `
 
 export const ListItem = styled.div`
-    background: #E4E4E4;
+    background: ${ props => props.isfinished ? '#E8FF8B' : '#E4E4E4' };
     box-shadow: 1px 4px 10px 0px rgba(0, 0, 0, 0.20);
     border-radius: 5px;
     height: 60px;
@@ -49,7 +50,7 @@ export const ListItem = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
-    padding: 0 10px;
+    padding: 0 20px;
     width: 500px;
 
     li {
