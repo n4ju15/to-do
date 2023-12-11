@@ -20,8 +20,15 @@ function App() {
   function finalizarTarefa(id){
     
     const newList = list.map( item => (
-      item.id === id ? { ...item, finished: true } : item
+      item.id === id ? { ...item, finished: !item.finished } : item
     ))
+
+    setList(newList)
+  }
+
+  function excluirTarefa(id){
+
+    const newList = list.filter( item => item.id !== id )
 
     setList(newList)
   }
@@ -37,7 +44,7 @@ function App() {
             <ListItem isFinished={item.finished} key={item.id}>
               <FcCheckmark onClick={() => finalizarTarefa(item.id)}/>
               <li>{item.task}</li>
-              <FcEmptyTrash />
+              <FcEmptyTrash onClick={() => excluirTarefa(item.id)}/>
             </ListItem>
           ))}
         </ul>
