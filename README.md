@@ -1,8 +1,28 @@
-# React + Vite
+# To Do List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido em React.js com Vite. A aplicação traz a funcionalidade de adicionar tarefas, excluir tarefas, marcar como concluído ou desmarcar.
 
-Currently, two official plugins are available:
+## Scripts disponíveis
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+No diretório do projeto, você pode executar: `npm run dev` ou `yarn dev`, para executar o aplicativo no modo de desenvolvimento.
+\
+Abra [http://localhost:5173](http://localhost:5173) para visualizá-lo em seu navegador.
+
+### Deployment
+
+Acesse o deploy da aplicação online: [https://register-app-aj.netlify.app/](https://register-app-aj.netlify.app/)
+
+## Burguer App
+
+<div align="center">
+<img src="src/assets/to-do.gif">
+</div>
+
+## Tecnologias
+
+- React
+- Vite
+- UUID
+- Styled components
+- Git and Github
+- Netlify

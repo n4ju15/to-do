@@ -5,7 +5,7 @@ import { FcEmptyTrash, FcCheckmark } from "react-icons/fc";
 import { Container, ToDoList, Input, Button, ListItem } from "./styles.js";
 
 function App() {
-  const [list, setList] = useState([{ id: uuidv4(), task: 'Nada', finished: true }]);
+  const [list, setList] = useState([]);
   const [inputTask, setInputTask] = useState('');
 
   function inputMudou(event) {
