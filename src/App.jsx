@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { FcEmptyTrash, FcCheckmark } from "react-icons/fc";
 
-import { Container, ToDoList, Input, Button, ListItem } from "./styles.js";
+import { Container, ToDoList, Input, Button, ListItem, Trash, Check, H3 } from "./styles.js";
 
 function App() {
   const [list, setList] = useState([]);
@@ -10,25 +9,29 @@ function App() {
 
   function inputMudou(event) {
     setInputTask(event.target.value);
-    console.log(inputTask);
   }
 
   function cliqueiNoBotao() {
-    setList([...list, { id: uuidv4(), task: inputTask, finished: false }]);
-  }
+    const trimmedTask = inputTask.trim();
+    if (trimmedTask) {
+      setList([...list, { id: uuidv4(), task: trimmedTask, finished: false }]);
+      setInputTask('');
+      document.getElementById("taskInput").value = ''; // Limpa o campo de entrada
+    }
+  }  
 
-  function finalizarTarefa(id){
-    
-    const newList = list.map( item => (
+  function finalizarTarefa(id) {
+
+    const newList = list.map(item => (
       item.id === id ? { ...item, finished: !item.finished } : item
     ))
 
     setList(newList)
   }
 
-  function excluirTarefa(id){
+  function excluirTarefa(id) {
 
-    const newList = list.filter( item => item.id !== id )
+    const newList = list.filter(item => item.id !== id)
 
     setList(newList)
   }
@@ -36,17 +39,23 @@ function App() {
   return (
     <Container>
       <ToDoList>
-        <Input onChange={inputMudou} placeholder="O que tenho para fazer..." />
+        <Input id="taskInput" onChange={inputMudou} placeholder="O que tenho para fazer..." />
         <Button onClick={cliqueiNoBotao}>Adcionar</Button>
 
         <ul>
-          {list.map((item) => (
-            <ListItem isFinished={item.finished} key={item.id}>
-              <FcCheckmark onClick={() => finalizarTarefa(item.id)}/>
-              <li>{item.task}</li>
-              <FcEmptyTrash onClick={() => excluirTarefa(item.id)}/>
-            </ListItem>
-          ))}
+          {
+            list.length > 0 ? (
+              list.map((item) => (
+                <ListItem isFinished={item.finished} key={item.id}>
+                  <Check onClick={() => finalizarTarefa(item.id)} />
+                  <li>{item.task}</li>
+                  <Trash onClick={() => excluirTarefa(item.id)} />
+                </ListItem>
+              ))
+            ) : (
+              <H3>Não há itens na lista...</H3>
+            )
+          }
         </ul>
       </ToDoList>
     </Container>
