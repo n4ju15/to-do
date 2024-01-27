@@ -10,7 +10,7 @@ Abra [http://localhost:5173](http://localhost:5173) para visualizá-lo em seu na
 
 ### Deployment
 
-Acesse o deploy da aplicação online: [https://register-app-aj.netlify.app/](https://register-app-aj.netlify.app/)
+Acesse o deploy da aplicação online: [https://simplytasks.netlify.app/](https://simplytasks.netlify.app/)
 
 ## Burguer App
 
